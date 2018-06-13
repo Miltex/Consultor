@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Consultor</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Consultor</string>
+    <string name="nav_header_subtitle">Aplicativo de Pedidos</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Entrar</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Usuário</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">Usuario Inválido</string>
+    <string name="error_invalid_password">Senha muito curta</string>
+    <string name="error_incorrect_password">Usuário e/ou Senha Incorretos</string>
+    <string name="error_field_required">Campo Obrigatório</string>
+    <string name="permission_rationale">"Permissão nos contatos é necessária para auto complemento do usuário."</string>
+    <string name="servico_indisponivel">"Indisponibilidade do Serviço"</string>
+    <string name="falha">Houve uma Falha</string>
+    <string name="title_activity_lista_produtos">Lista de Produtos</string>
+    <string name="pedir">Realizar Pedido</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="quant">Quantidade de Produtos</string>
+
+</resources>
