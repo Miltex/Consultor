@@ -52,7 +52,7 @@ public class ListaProdutos extends AppCompatActivity {
     private View principalView;
     private ListView listView;
     private ListarProdutoTask listaTask = null;
-    private RealizarPedidoTask pedidoTask = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,43 +82,20 @@ public class ListaProdutos extends AppCompatActivity {
                 // Snackbar.make(listView, ((TextView) view).getText(), Snackbar.LENGTH_LONG)
                 //         .setAction("Action", null).show();
 
-              //  onCreateDialog((String)((TextView) view).getText()).show();
+                //  onCreateDialog((String)((TextView) view).getText()).show();
 
             }
         });
     }
 
 
-    /*public Dialog onCreateDialog(String item) {
-        String[] split = item.split(" ");
-        final String idCliente = split[0];
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View inflaView = inflater.inflate(R.layout.dialog_pedido, null);
-        builder.setView(inflaView)
-
-                .setPositiveButton(R.string.pedir, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-
-                        Snackbar.make(listView,"cliente="+ getCodigoCliente(), Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-
-                    }
-                })
-                .setNegativeButton(R.string.cancelar, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // LoginDialogFragment.this.getDialog().cancel();
-
-                    }
-                });
-
-        return builder.create();
-    }*/
-
     private void uiUpdate() {
+
+        String[] de = {"id", "nome", "desc", "marc", "cod", "valor"};
+        int[] para = {R.id.id_prod, R.id.nome, R.id.desc, R.id.marc, R.id.cod, R.id.valor};
+
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, produtoList, android.R.layout.simple_list_item_1,
-                new String[]{"produto"}, new int[]{android.R.id.text1});
+                de, para);
         listView.setAdapter(simpleAdapter);
         setListViewHeightBasedOnChildren(listView);
     }
@@ -156,7 +133,7 @@ public class ListaProdutos extends AppCompatActivity {
 
     private void initList() throws IOException {
         listaTask = new ListarProdutoTask();
-        listaTask.execute((Void)null);
+        listaTask.execute((Void) null);
     }
 
     private String getCodigoCliente() {
@@ -171,7 +148,7 @@ public class ListaProdutos extends AppCompatActivity {
         @Override
         protected List<ProdutoVO> doInBackground(Void... voids) {
             try {
-                return getProdutos(requestGetProdutos()) ;
+                return getProdutos(requestGetProdutos());
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
@@ -180,11 +157,13 @@ public class ListaProdutos extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<ProdutoVO> prods) {
-            listaTask=null;
+            listaTask = null;
             if (prods != null) {
                 for (ProdutoVO produto : prods) {
-                    produtoList.add(criarProduto("produto", String.valueOf(produto.getId()) + " " + produto.getNome()
-                            + " " + produto.getMarca() + " R$ " + produto.getValor()));
+
+                    produtoList.add(criarProduto("id",String.valueOf(produto.getId()),"nome",produto.getNome(),
+                            "desc",produto.getDescricao(),"marc",produto.getMarca(),
+                            "cod",produto.getCodigo(),"valor",String.valueOf(produto.getValor())));
                 }
                 uiUpdate();
             } else {
@@ -200,9 +179,16 @@ public class ListaProdutos extends AppCompatActivity {
             }.getType());
         }
 
-        private HashMap<String, String> criarProduto(String chave, String valor) {
+        private HashMap<String, String> criarProduto(String idKey, String idValor, String nomeKey, String nomeValor,
+                                                     String descKey, String descValor, String marcKey, String marcValor,
+                                                     String codKey, String codValor, String valorKey, String valorValor) {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put(chave, valor);
+            map.put(idKey, idValor);
+            map.put(nomeKey, nomeValor);
+            map.put(descKey, descValor);
+            map.put(marcKey, marcValor);
+            map.put(codKey, codValor);
+            map.put(valorKey, valorValor);
             return map;
         }
 
@@ -218,54 +204,5 @@ public class ListaProdutos extends AppCompatActivity {
         }
     }
 
-    private class RealizarPedidoTask extends AsyncTask<Void,Void,Response>{
-
-        private OkHttpClient client;
-        private PedidoVO pedido;
-
-        public RealizarPedidoTask(Long idClient,Long idProduto,Integer quant){
-            pedido = new PedidoVO(idClient,idProduto,quant);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            client = new OkHttpClient();
-        }
-
-        @Override
-        protected Response doInBackground(Void... params) {
-            Response response=null;
-            try {
-
-                Gson gson = new Gson();
-                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), gson.toJson(pedido));
-                Request request = new Request.Builder()
-                        .url(BaseUrl.POST_PEDIDO)
-                        .post(body)
-                        .build();
-                response = client.newCall(request).execute();
-                return response;
-
-            } catch (SocketTimeoutException e) {
-                // Snackbar.make(listView, R.string.servico_indisponivel, Snackbar.LENGTH_LONG)
-                //         .setAction("Action", null).show();
-                return response;
-
-                // return false;
-            } catch (Exception ex){
-                //  Snackbar.make(listView, R.string.falha, Snackbar.LENGTH_LONG)
-                //          .setAction("Action", null).show();
-                return response;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(final Response response) {
-
-            if (response.isSuccessful()) {
-                Toast.makeText(getApplicationContext(),"Pedido Realizado com Sucesso.",Toast.LENGTH_LONG);
-            }
-        }
-    }
 
 }

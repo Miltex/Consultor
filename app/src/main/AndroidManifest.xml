@@ -21,8 +21,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:noHistory="true"
             android:label="@string/title_activity_login"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +34,10 @@
             android:name=".ListaProdutos"
             android:label="@string/title_activity_lista_produtos"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProdutoDetalhe"
+            android:label="@string/title_activity_produto_detalhe"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

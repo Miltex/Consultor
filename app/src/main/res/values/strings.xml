@@ -24,5 +24,6 @@
     <string name="pedir">Realizar Pedido</string>
     <string name="cancelar">Cancelar</string>
     <string name="quant">Quantidade de Produtos</string>
+    <string name="title_activity_produto_detalhe">Detalhes do Produto</string>
 
 </resources>
