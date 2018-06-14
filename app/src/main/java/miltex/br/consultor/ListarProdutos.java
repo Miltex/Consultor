@@ -3,10 +3,9 @@ package miltex.br.consultor;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,7 +30,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ListaProdutos extends AppCompatActivity {
+public class ListarProdutos extends AppCompatActivity {
 
     List<Map<String, String>> produtoList = new ArrayList<Map<String, String>>();
     private View principalView;
@@ -42,10 +41,7 @@ public class ListaProdutos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_produtos);
-        principalView = findViewById(R.id.drawer_layout);
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_listar_produtos);
 
         try {
             initList();
@@ -73,43 +69,12 @@ public class ListaProdutos extends AppCompatActivity {
     private void uiUpdate() {
 
         String[] de = {"id", "nome", "desc", "marc", "cod", "valor"};
-        int[] para = {R.id.id_prod, R.id.nome, R.id.desc, R.id.marc, R.id.cod, R.id.valor};
+        int[] para = {1, 2, 3, 4, 5, 6};
 
         simpleAdapter = new SimpleAdapter(this, produtoList, R.layout.content_lista_produtos,
                 de, para);
         listView.setAdapter(simpleAdapter);
-        setListViewHeightBasedOnChildren(listView);
-    }
 
-    /**
-     * Muito doido peguei da net... ver como funciona...
-     * Funcionou...
-     *
-     * @param listView
-     */
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null)
-            return;
-
-        int desiredWidth = View.MeasureSpec.makeMeasureSpec(
-                listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
-        int totalHeight = 0;
-
-        View view = null;
-
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            view = listAdapter.getView(i, view, listView);
-            if (i == 0)
-                view.setLayoutParams(new ViewGroup.LayoutParams(
-                        desiredWidth, RelativeLayout.LayoutParams.WRAP_CONTENT));
-
-            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-            totalHeight += view.getMeasuredHeight();
-        }
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
     }
 
     private void initList() throws IOException {
@@ -184,6 +149,4 @@ public class ListaProdutos extends AppCompatActivity {
             return response.body().string();
         }
     }
-
-
 }

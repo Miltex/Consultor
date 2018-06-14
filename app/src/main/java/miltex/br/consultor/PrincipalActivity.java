@@ -84,7 +84,7 @@ public class PrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             getApplicationContext().startActivity(new Intent(getApplicationContext(), ListaProdutos.class));
         } else if (id == R.id.nav_gallery) {
-
+            getApplicationContext().startActivity(new Intent(getApplicationContext(), ListarProdutos.class));
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
