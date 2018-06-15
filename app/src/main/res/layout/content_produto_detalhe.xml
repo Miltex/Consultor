@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ProdutoDetalhe"
-    tools:showIn="@layout/activity_produto_detalhe">
+    tools:showIn="@layout/activity_produto_detalhe"
+    android:id="@+id/contView">
+
+    <TextView
+        android:id="@+id/tvNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
 
 </android.support.constraint.ConstraintLayout>

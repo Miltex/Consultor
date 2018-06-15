@@ -13,36 +13,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <TextView
-            android:id="@+id/id_prod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/marc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/cod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/valor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
     </ListView>
 
 </RelativeLayout>

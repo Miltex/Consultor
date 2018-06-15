@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,11 +13,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +27,12 @@ import java.util.Map;
 
 import miltex.br.consultor.constantes.BaseUrl;
 import miltex.br.consultor.dto.ClientCode;
+import miltex.br.consultor.dto.PedidoVO;
 import miltex.br.consultor.dto.ProdutoVO;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ListaProdutos extends AppCompatActivity {
@@ -184,6 +188,8 @@ public class ListaProdutos extends AppCompatActivity {
             return response.body().string();
         }
     }
+
+
 
 
 }
