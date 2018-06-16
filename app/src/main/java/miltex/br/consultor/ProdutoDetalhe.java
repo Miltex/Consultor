@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +30,8 @@ import okhttp3.Response;
 
 public class ProdutoDetalhe extends AppCompatActivity {
 
-    private TextView tvNome;
+    private TextView tvNome,tvDesc,tvMarc,tvCod,tvValor;
+    private EditText edQuant;
     private View view;
 
     @Override
@@ -42,19 +44,38 @@ public class ProdutoDetalhe extends AppCompatActivity {
         view = findViewById(R.id.contView);
 
         tvNome = findViewById(R.id.tvNome);
+        tvDesc = findViewById(R.id.tvDesc);
+        tvMarc = findViewById(R.id.tvMarc);
+        tvCod = findViewById(R.id.tvCod);
+        tvValor = findViewById(R.id.tvValor);
+        edQuant = findViewById(R.id.ed_qua);
 
         Bundle bundle = getIntent().getExtras();
 
         final Long id = bundle.getLong("ID");
         String nome = bundle.getString("NOME");
+        String desc = bundle.getString("DESC");
+        String marc = bundle.getString("MARC");
+        String cod= bundle.getString("COD");
+        String valor = bundle.getString("VALOR");
 
         tvNome.setText(nome);
+        tvDesc.setText(desc);
+        tvMarc.setText(marc);
+        tvCod.setText(cod);
+        tvValor.setText(valor);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RealizarPedidoTask pedidoTask = new RealizarPedidoTask(Long.parseLong(getCodigoCliente()),id,2);
+                String quantidade = edQuant.getText().toString();
+
+                if (quantidade.isEmpty()){
+                    quantidade = "1";
+                }
+
+                RealizarPedidoTask pedidoTask = new RealizarPedidoTask(Long.parseLong(getCodigoCliente()),id,Integer.parseInt(quantidade));
                 pedidoTask.execute((Void)null);
 
             }

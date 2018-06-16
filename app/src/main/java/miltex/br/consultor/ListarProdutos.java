@@ -69,7 +69,7 @@ public class ListarProdutos extends AppCompatActivity {
                 bundle.putString("DESC",item.getDescricao());
                 bundle.putString("MARC",item.getMarca());
                 bundle.putString("COD",item.getCodigo());
-                bundle.putString("VALOR",item.getValor().toString());
+                bundle.putString("VALOR","R$ "+item.getValor().toString().replace(".",","));
 
                 Intent intent = new Intent(ListarProdutos.this,ProdutoDetalhe.class);
                 intent.putExtras(bundle);
