@@ -31,10 +31,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListaProdutos"
-            android:label="@string/title_activity_lista_produtos"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ProdutoDetalhe"
             android:label="@string/title_activity_produto_detalhe"
             android:theme="@style/AppTheme.NoActionBar" />

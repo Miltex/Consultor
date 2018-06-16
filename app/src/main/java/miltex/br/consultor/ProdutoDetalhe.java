@@ -63,8 +63,6 @@ public class ProdutoDetalhe extends AppCompatActivity {
        //  Toast.makeText(getApplicationContext(), "Pedido Realizado com Sucesso.", Toast.LENGTH_LONG);
         Snackbar.make(view, "Pedido Realizado.", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
-
-        this.finish();
     }
 
     private String getCodigoCliente() {

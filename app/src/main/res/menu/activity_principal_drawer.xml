@@ -5,12 +5,12 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/lst_prod"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Produtos" />
 
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/meus_ped"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Meus Pedidos" />
         <item
@@ -19,7 +19,7 @@
             android:title="Configurações" />
 
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/sair"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Sair" />
     </group>

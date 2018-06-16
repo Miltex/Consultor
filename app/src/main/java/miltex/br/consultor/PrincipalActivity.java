@@ -81,11 +81,11 @@ public class PrincipalActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            getApplicationContext().startActivity(new Intent(getApplicationContext(), ListaProdutos.class));
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.lst_prod) {
             getApplicationContext().startActivity(new Intent(getApplicationContext(), ListarProdutos.class));
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.sair) {
+            finish();
+        } else if (id == R.id.meus_ped) {
 
         } else if (id == R.id.nav_manage) {
 

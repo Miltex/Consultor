@@ -43,19 +43,19 @@ public class ProdutosAdapter extends BaseAdapter {
 
         ProdutoVO produto = produtos.get(position);
 
-        TextView id = prodsView.findViewById(R.id.id_prod);
+      //  TextView id = prodsView.findViewById(R.id.id_prod);
         TextView nome = prodsView.findViewById(R.id.nome);
-        TextView desc = prodsView.findViewById(R.id.desc);
+     //   TextView desc = prodsView.findViewById(R.id.desc);
         TextView marc = prodsView.findViewById(R.id.marc);
         TextView cod = prodsView.findViewById(R.id.cod);
         TextView val = prodsView.findViewById(R.id.valor);
 
-        id.setText(produto.getId().toString());
+      //  id.setText(produto.getId().toString());
         nome.setText(produto.getNome());
-        desc.setText(produto.getDescricao());
+     //   desc.setText(produto.getDescricao());
         marc.setText(produto.getMarca());
         cod.setText(produto.getCodigo());
-        val.setText(produto.getValor().toString());
+        val.setText("R$ "+produto.getValor().toString().replace(".",","));
 
         return prodsView;
 
