@@ -1,6 +1,8 @@
 package miltex.br.consultor;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -61,8 +63,10 @@ public class ProdutoDetalhe extends AppCompatActivity {
 
     private void uiUpdate(){
        //  Toast.makeText(getApplicationContext(), "Pedido Realizado com Sucesso.", Toast.LENGTH_LONG);
-        Snackbar.make(view, "Pedido Realizado.", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        Intent intent = new Intent();
+        intent.putExtra("key","value");// O resultado é colocado aqui... para ser pego na activity que chamou
+        setResult(Activity.RESULT_OK);
+        finish();
     }
 
     private String getCodigoCliente() {

@@ -86,9 +86,7 @@ public class PrincipalActivity extends AppCompatActivity
         } else if (id == R.id.sair) {
             finish();
         } else if (id == R.id.meus_ped) {
-
-        } else if (id == R.id.nav_manage) {
-
+            getApplicationContext().startActivity(new Intent(getApplicationContext(), ListarPedidos.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
